@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS GRID</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+      * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 20px;
+}
+
+.container {
+  display: grid;
+  height: 100vh;
+  width: 80%;
+  margin: 0 auto;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 100px 300px 200px 100px;
+
+  grid-template-areas: 
+  "header header header"
+  "sidebar content sidebar1"
+  "sidebar content sidebar1"
+  "footer footer footer";
+
+  column-gap: 10px;
+  row-gap: 10px;
+}
+
+.item {
+  background-color: gold;
+  border: 1px solid grey;
+  min-height: 50px;
+  padding: 20px;
+  font-size: 20px;
+}
+
+.item-1 {
+  grid-area: header;
+}
+
+.item-2 {
+  grid-area: sidebar;
+}
+
+.item-3 {
+  grid-area: content;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 5px;
+  row-gap: 5px;
+}
+
+.item-4 {
+  grid-area: footer;
+}
+.item-5{
+    grid-area:sidebar1;
+}
+.article {
+  border: 5px solid rgb(255, 0, 106);
+}
+@media (max-width:500px)
+{
+    .container{
+    grid-template-areas: 
+    "header "
+    "content "
+    "sidebar"
+    "footer";
+    }
+    .item-5{
+        display:none;
+    }
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="item-1 item">HEADER</div>
+    <div class="item-2 item">SIDEBAR</div>
+    <div class="item-3 item">
+      <div class="article">Article 1</div>
+      <div class="article">Article 2</div>
+      <div class="article">Article 3</div>
+      <div class="article">Article 4</div>
+      <div class="article">Article 5</div>
+      <div class="article">Article 6</div>
+    </div>
+    <div class="item-5 item">Sidebar 1</div>
+    <div class="item-4 item">FOOTER</div>
+  </div>
+</body>
+</html>
